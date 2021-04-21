@@ -7,11 +7,10 @@ import webbrowser
 response = requests.get("http://api.open-notify.org/iss-now.json")
 a = response.json()
 b = a['iss_position']
-c = float(b['latitude'])
-d = float(b['longitude'])
+c, d = float(b['latitude']), float(b['longitude'])
 locator = Nominatim(user_agent="myGeocoder")
-location = (c,d)
-print(c, d)
+print(c,d)
+location = (c, d)
 place = locator.reverse(location)
 if place == None:
     print("address for this location cannot be found, please check the map")
